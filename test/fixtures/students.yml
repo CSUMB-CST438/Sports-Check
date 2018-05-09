@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  school_year: 1
+  gpa: 1.5
+  attendance: 1
+
+two:
+  name: MyString
+  school_year: 1
+  gpa: 1.5
+  attendance: 1

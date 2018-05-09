@@ -1,0 +1,62 @@
+<%= form_for(@student) do |form| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form.text_field(:name, placeholder: "Name")%>
+  <br>
+  <%= form.text_field(:sport, placeholder: "Sports")%>
+  <br>
+
+  <%= form.text_field(:level, placeholder: "Level")  %>
+
+  <br>
+  <%=form.label "School Year (1-4):" %>
+  <%= form.number_field :school_year, max: 4, min: 1,placeholder:"School Year (1-4)"  %>
+ 
+  <br>
+   <%= form.label "GPA: " %>
+  <%= form.number_field :gpa,step: 0.01, placeholder: 2.0 %>
+  
+   <br>
+   <%= form.label "Attendance:" %>
+  <%= form.number_field :attendance, step: 1, min:0,max:365 ,placeholder: 0 %>
+  <br>
+  <%=form.label "Need's Doctor's Note:"%>
+  
+  <%= form.check_box(:doctor_note) %>
+
+  <%=form.label "Physical:"%>
+  
+  <%= form.check_box(:physical) %>
+
+  <%=form.label "Concussion:"%>
+  
+  <%= form.check_box(:concussion) %>
+
+
+  <%=form.label "Cardiac:"%>
+  
+  <%= form.check_box(:cardiac) %>
+
+  <%=form.label "Code Of Ethics:"%>
+  
+  <%= form.check_box(:c_o_ethics) %>
+
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
