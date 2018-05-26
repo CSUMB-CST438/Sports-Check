@@ -1,0 +1,34 @@
+
+
+
+<% if  @user != nil && logged_in? %>
+ 
+
+  You are loggin in as <%= @user.school_name %>
+
+
+  <%= link_to("Check students", students_path) %>
+
+
+<% else %>
+
+	<h1>
+		You need to log in.
+	</h1> 
+	<%= form_for(User.new) do |form| %>
+		<div>
+			<%= form.label :school_name %>
+			<%= form.text_field :school_name, id: :user_school_name  %>
+		</div>
+
+		<div>
+			<%= form.label :password %>
+			<%= form.text_field :password, id: :user_password  %>
+		</div>
+
+		<div>
+			<%= form.submit %>
+		</div>
+
+	<% end %>
+<% end %>

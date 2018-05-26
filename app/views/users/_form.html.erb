@@ -1,0 +1,19 @@
+<%= form_for(User.new) do |form| %>
+  
+
+
+  <%=form.label "School Name" %>
+  <%= form.number_field :school_name %>
+ 
+  <br>
+ 
+
+  <%=form.label "Password" %>
+  <%= form.number_field :password, max: 4, min: 1,placeholder:"School Year (1-4)"  %>
+ 
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

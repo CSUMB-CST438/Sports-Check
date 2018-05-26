@@ -1,30 +1,29 @@
 <p id="notice"><%= notice %></p>
-
 Name:  <b><%= @student.name %></b>
-
 <br>
 GPA: <b><%= @student.gpa %></b>
-
 <br>
 Sport: <b><%= @student.sport %></b>
-
-
 <br>
 Attendance: <%= @student.attendance %>
-
 <br>
 Need's Doctor Note: <%=check_box("student", "doctor_note", {}, "yes", "no") %>
 <br>
 Cardiac: <%=check_box("student", "cardiac", {}, "yes", "no") %>
 <br>
 Concussion: <%=check_box("student", "concussion", {}, "yes", "no") %>
-
 <br>
 Physical: <%=check_box("student", "physical", {}, "yes", "no") %>
 <br>
+
+<% if @student.form.attached? %>
+<%= link_to("Physical Form", url_for(@student.form)) %>
+<% else %>
+  No physical form needed.
+<% end %>
+
+<br>
 Code Of Ethics: <%=check_box("student", "c_o_ethics", {}, "yes", "no") %>
-
-
 
 <br>
 <%= link_to 'Edit', edit_student_path(@student) %> |

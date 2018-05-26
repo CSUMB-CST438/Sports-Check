@@ -1,0 +1,28 @@
+
+
+
+<% if logged_in? %>
+
+
+		You are logged in!
+
+
+<% else %>
+
+	<%= form_for(@user) do |form| %>
+		<div>
+			<%= form.label :school_name %>
+			<%= form.text_field :school_name, id: :user_school_name  %>
+		</div>
+
+		<div>
+			<%= form.label :password %>
+			<%= form.text_field :password, id: :user_password  %>
+		</div>
+
+		<div>
+			<%= form.submit %>
+		</div>
+
+	<% end %>
+<% end %>
