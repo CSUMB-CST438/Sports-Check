@@ -11,11 +11,14 @@
 
   <body>
     <% if current_user && logged_in? %>
-      <%= link_to 'log out', controller: "users", action: "destroy" %>
-      <br />
-      <h2> <%= current_user.school.name %> </h2>
+      
+      <%= render 'layouts/navigation' %>
+
     <% end %>
 
-    <%= yield %>
+    <div class = "container">
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
