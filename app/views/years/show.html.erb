@@ -1,45 +1,70 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Students for year <%= @year_number %></h1>
-  <%= link_to "New Year", increase_years_url(@year_number) %>
-<br>
-  <h4>
-    Go to certain years:
-  </h4>
- <% current_user.school.years.all.each do | year | %>
-    <%= link_to year.number, year%> 
-  <% end %>
-  <br>
-  <br>
-<% [1,2,3,4].each do |grade| %>
+<h2 align= "center">
+    <strong> Current Students</strong>
+  </h2> 
+<div class="well col-xs-12 col-xs-offset-5 center custom-select" style="width:200px;" >
   
-  <li>
-    <%= link_to grade, years_show_path(id: @year,grade: grade) %>
-  </li> 
-<% end %>
-<li>
-    <%= link_to "All students", years_show_path(id: @year) %>
-  </li> 
-<table>
-  <thead>
-    <tr>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
+  <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Status
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+
+
+        <% [1].each do |grade| %>
+          
+          <li>
+            <%= link_to "Freshman" , years_show_path(id: @year,grade: grade) %>
+          </li> 
+        <% end %>
+        <% [2].each do |grade| %>
+          
+          <li>
+            <%= link_to "Sophmore", years_show_path(id: @year,grade: grade) %>
+          </li> 
+        <% end %>
+        <% [3].each do |grade| %>
+          
+          <li>
+            <%= link_to "Junior", years_show_path(id: @year,grade: grade) %>
+          </li> 
+        <% end %>
+        <% [4].each do |grade| %>
+          
+          <li>
+            <%= link_to "Senior", years_show_path(id: @year,grade: grade) %>
+          </li> 
+          <li>
+            <%= link_to "All students", years_show_path(id: @year) %>
+          </li> 
+        <% end %>
+
+      </ul>
+
+
+
+  </br></br>
+    
+  <table class="center">
+    <thead>
       <tr>
-        <td><%= student.name %></td>
-        <td><%= student.sport %></td>
-        <td><%= student.school_year %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="6"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody >
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= link_to student.name, student %></td>
+          <td><%= student.sport %></td>
+<!--      <td><%= student.school_year %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
+<div class= "article-actions center">
 
-<%= link_to 'New Student', new_student_path %>
+  <%= link_to 'New Student', new_student_path, class: "subbtn" %>
+  <%= link_to "New Year", increase_years_url(@year_number), class: "subbtn" %>
+</div>

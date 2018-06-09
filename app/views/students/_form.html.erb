@@ -1,68 +1,81 @@
-<%= form_for(@student) do |form| %>
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
-      <ul>
-      <% @student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<% if @student.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+          <ul>
+          <% @student.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= form.text_field(:name, placeholder: "Name")%>
-  <br>
-  <%= form.text_field(:sport, placeholder: "Sports")%>
-  <br>
-  
-  <%=form.label "Year" %>
-  
-  <%= form.select :year, current_user.school.years.all.pluck(:number) %>
 
-  <br>
+<div class='row'>
+  <div class='col-xs-12'>  
 
-  <%=form.label "School Year (1-4):" %>
-  <%= form.number_field :school_year, max: 4, min: 1,placeholder:"School Year (1-4)"  %>
- 
-  <br>
-   <%= form.label "GPA: " %>
-  <%= form.number_field :gpa,step: 0.01, placeholder: 2.0 %>
-  
-   <br>
-   <%= form.label "Attendance:" %>
-  <%= form.number_field :attendance, step: 1, min:0,max:365 ,placeholder: 0 %>
-  <br>
-  <%=form.label "Need's Doctor's Note:"%>
-  
-  <%= form.check_box(:doctor_note) %>
+    <%= form_for(@student, :html => {class: "form-group", role: "form"}) do |form| %>
+      
 
-  <br>
+      <div class="form-group" >
+        <%= form.label :name%>
+        <%= form.text_field :name, class: "form-control",autofocus: true%>
+      </div> 
 
-  <%= form.label :form %>
-  <%= form.file_field :form %>
-  <br>
+      <div class="form-group">
+        <%= form.label :sport%>
+        <%= form.text_field :sport, class: "form-control",autofocus: true %>
+      </div> 
 
-  <%=form.label "Physical:"%>
-  
-  <%= form.check_box(:physical) %>
+      <div class="form-group">
+        <%= form.label "Year"%>
+        <%= form.select :year, current_user.school.years.all.pluck(:number)  %>
+      </div> 
+      
+      <div class="form-group" >
+        <%=form.label "School Year (1-4):" %>
+        <%= form.number_field :school_year, max: 4, min: 1,placeholder:"School Year Status"  %>
+      </div>
 
-  <%=form.label "Concussion:"%>
-  
-  <%= form.check_box(:concussion) %>
+      <div class="form-group" >
+       <%= form.label "GPA: " %>
+       <%= form.number_field :gpa,step: 0.01, placeholder: 2.0 %>
+      </div>
 
+      <div class="form-group" >
+        <%= form.label "Attendance:" %>
+        <%= form.number_field :attendance, step: 1, min:0,max:365 ,placeholder: 0 %>
+      </div>
 
-  <%=form.label "Cardiac:"%>
-  
-  <%= form.check_box(:cardiac) %>
+      <div class="checkbox">
+        <label>
+          <%= form.check_box(:doctor_note)%> Doctor's Note
+        </label>
+        <label>
+          <%= form.check_box(:physical) %> Physical:
+        </label>
+        <label>
+          <%= form.check_box(:concussion) %>Concussion:
+        </label>
+        <label>
+          <%= form.check_box(:cardiac) %> Cardiac:
+        </label>
+        <label>
+          <%= form.check_box(:c_o_ethics) %> Code of Ethics:
+        </label>
+      </div>
 
-  <%= form.label "Code Of Ethics:"%>
-  
-  <%= form.check_box(:c_o_ethics) %>
+      </br>
 
-  
-  
+      <div class="form-group">
+        <%= form.label "Upload Form" %>
+        <%= form.file_field :form %>
+        <p class="help-block">Upload any neccesary forms.</p>
+      </div> 
 
-  <div class="actions">
-    <%= form.submit %>
+      <div >
+        <%= form.submit  "Create Student",class: 'subbtn' %>
+      </div>
+
+    <% end %>
+
   </div>
-<% end %>
+</div> 

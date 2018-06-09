@@ -1,6 +1,3 @@
-
-
-
 <% if  @user != nil && logged_in? %>
  
 
@@ -12,23 +9,29 @@
 
 <% else %>
 
-	<h1>
-		You need to log in.
-	</h1> 
-	<%= form_for(User.new) do |form| %>
-		<div>
-			<%= form.label :school_name %>
-			<%= form.text_field :school_name, id: :user_school_name  %>
-		</div>
+	<div class= "center jumbotron">
+		<h1>Sports Check</h1>
 
-		<div>
-			<%= form.label :password %>
-			<%= form.text_field :password, id: :user_password  %>
-		</div>
+		<h3>
+			Please Log In
+		</h3> 
+		<%= form_for(User.new) do |form| %>
+			<div>
+				<%= form.label :school_name %>
+				<%= form.text_field :school_name, id: :user_school_name  %>
+			</div>
 
-		<div>
-			<%= form.submit %>
-		</div>
+			<div>
+				<%= form.label :password %>
+				<%= form.text_field :password, id: :user_password  %>
+			</div>
 
-	<% end %>
+			</br>
+
+			<div>
+				<%= form.submit "Sign In | Sign up" , class: 'btn' %>
+			</div>
+
+		<% end %>
+	</div>
 <% end %>

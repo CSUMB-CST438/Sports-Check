@@ -1,24 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
-  <h3>
-    <%= link_to "New Year", increase_years_path(@year_number) %>
-  </h3>
-<br>
-<h3>
-  School Years:
-  </h3> 
-<ul>
- <% current_user.school.years.sort_by(&:number).each do | year | %>
- <li>
-    <%= link_to year.number, year %> 
-    <%= year.school.name %>
-  </li>
-  <% end %>
+<h2 align= "center">
+  <strong> Select Academic Year</strong>
+</h2> 
 
-</ul>
+<div class="well col-xs-10 col-xs-offset-5 center custom-select" style="width:200px;" >
+	<div class="dropdown">
+    	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Year
+    	<span class="caret"></span></button>
+    	<ul class="dropdown-menu">
+
+		 <% current_user.school.years.sort_by(&:number).each do | year | %>
+		    <li>
+		    	<%= link_to year.number, year %>
+		    </li> 
+		  <% end %>
+		</ul>
+
+	</div>
 
 
-<br>
+		<br>
 
-<%= link_to 'New Student', new_student_path %>
+		<div class= "article-actions center">
+			<%= link_to 'New Student', new_student_path, class: "subbtn" %>
+			<%= link_to "New Year", increase_years_path(@year_number), class: "subbtn"%>
+		</div>
+</div>
+ 
